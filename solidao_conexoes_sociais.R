@@ -20,5 +20,12 @@
 ### mais pesquisas são necessárias para entender mecanismos causais, tamanho
 ### de efeitos e mudanças ao longo do tempo.
 
+### A renda per capita nacional é fortemente correlacionada com agregados familiars
+### unipessoais: pessoas mais ricas tendem a viver sozinhas. O número de pessoas 
+### que moram sozinhas tende a ser maior em países com maior renda per capita.
+
+### Estas correlações devem-se em parte ao facto de que as pessoas que podem 
+### dar-se a esse luxo, optam frequentemente por viver sozinhas. 
+
 
 
