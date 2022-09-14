@@ -38,5 +38,43 @@ scs <- read.csv("one-person-households-vs-gdp-per-capita.csv")
 view(scs)
 names(scs)
 
+# Manipular dados --------------------------------------------------------------------------------------------------------------------------
 
+scs <- scs %>%
+  select(Entity, Year, Share.of.one.person.households,
+         GDP.per.capita..PPP..constant.2017.international...) %>%
+  rename(porcentagem = Share.of.one.person.households,
+         renda = GDP.per.capita..PPP..constant.2017.international...) %>%
+  drop_na() %>%
+  view()
+
+scs1 <- scs %>%
+  filter(Entity %in% c("Austria", "Belgium", "Bulgaria",
+                       "Croatia", "Brazil", "China",
+                       "Russia", "Denmark", "Estonia")) %>%
+  group_by(Entity) %>%
+  summarise(media = mean(porcentagem),
+            sd = sd(porcentagem), 
+            n = n(),
+            se = sd/sqrt(n)) %>%
+  view()
+
+# Gráficos ---------------------------------------------------------------------------------------------------------------------------------
+
+### Seleção de cores
+
+c4a_gui()
+c4a("paired", 9)
+
+ggplot(scs1, aes(x = fct_reorder(Entity, media), y = media, 
+                 fill = Entity)) +
+  geom_col() +
+  geom_errorbar(aes(ymin = media - se, ymax = media + se),
+                width = 0.3, size = 0.8) +
+  scale_fill_manual(values = c("#A6CEE3", "#1F78B4", "#B2DF8A",
+                               "#33A02C", "#FB9A99", "#E31A1C",
+                               "#FDBF6F", "#FF7F00", "#CAB2D6")) +
+  labs(x = "Países", y = "Percentagem de lares com uma pessoa") +
+  theme(legend.position = "none", 
+        axis.text = element_text(color = "black"))  
 
