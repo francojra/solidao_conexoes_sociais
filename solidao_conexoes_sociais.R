@@ -59,6 +59,11 @@ scs1 <- scs %>%
             se = sd/sqrt(n)) %>%
   view()
 
+scs2 <- scs %>%
+  filter(Entity %in% c("Belgium", "Bulgaria",
+                       "Denmark", "Estonia")) %>%
+  view()
+
 # Gráficos ---------------------------------------------------------------------------------------------------------------------------------
 
 ### Seleção de cores
@@ -75,6 +80,17 @@ ggplot(scs1, aes(x = fct_reorder(Entity, media), y = media,
                                "#33A02C", "#FB9A99", "#E31A1C",
                                "#FDBF6F", "#FF7F00", "#CAB2D6")) +
   labs(x = "Países", y = "Percentagem de lares com uma pessoa") +
+  theme_bw() +
   theme(legend.position = "none", 
         axis.text = element_text(color = "black"))  
 
+c4a("paired", 4)
+
+ggplot(scs2, aes(x = Year, y = porcentagem, 
+                 group = Entity, col = Entity)) +
+  geom_point(size = 3) +
+  geom_line(size = 1.8) +
+  scale_color_manual(values = c("#A6CEE3", "#1F78B4", "#B2DF8A",
+                               "#33A02C")) +
+  labs(x = "Tempo (anos)", y = "Percentagem de lares com uma pessoa",
+       color = "Países") 
