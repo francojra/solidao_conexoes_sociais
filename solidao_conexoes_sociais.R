@@ -121,7 +121,6 @@ ggplot(scs3, aes(x = media_renda, y = media_por, col = Entity)) +
   scale_x_continuous(labels = comma) +
   geom_label(aes(label = Entity), size = 5) +
   labs(x = "Renda per capita ($)", 
-       y = "Percentagem de lares com uma pessoa",
-       color = "Países") +
+       y = "Percentagem de lares com uma pessoa") +
   theme_minimal() +
   theme(legend.position = "none")
