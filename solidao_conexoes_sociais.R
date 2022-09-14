@@ -31,6 +31,7 @@
 
 library(tidyverse)
 library(cols4all)
+library(scales)
 
 # Carregar dados ---------------------------------------------------------------------------------------------------------------------------
 
@@ -64,6 +65,7 @@ scs2 <- scs %>%
                        "Denmark", "Estonia")) %>%
   view()
 
+
 # Gráficos ---------------------------------------------------------------------------------------------------------------------------------
 
 ### Seleção de cores
@@ -93,4 +95,14 @@ ggplot(scs2, aes(x = Year, y = porcentagem,
   scale_color_manual(values = c("#A6CEE3", "#1F78B4", "#B2DF8A",
                                "#33A02C")) +
   labs(x = "Tempo (anos)", y = "Percentagem de lares com uma pessoa",
+       color = "Países") 
+
+options(scipen = 999)
+
+ggplot(scs, aes(x = renda, y = porcentagem)) +
+  geom_point(size = 1) +
+  geom_smooth(method = "lm", color = "black") +
+  scale_x_continuous(labels = comma) +
+  labs(x = "Renda per capita ($)", 
+       y = "Percentagem de lares com uma pessoa",
        color = "Países") 
