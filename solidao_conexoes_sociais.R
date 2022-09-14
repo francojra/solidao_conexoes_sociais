@@ -117,7 +117,6 @@ ggplot(scs, aes(x = renda, y = porcentagem)) +
        color = "Países") 
 
 ggplot(scs3, aes(x = media_renda, y = media_por, col = Entity)) +
-  geom_point(size = 1) +
   scale_x_continuous(labels = comma) +
   geom_label(aes(label = Entity), size = 5) +
   labs(x = "Renda per capita ($)", 
