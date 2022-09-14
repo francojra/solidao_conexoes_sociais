@@ -65,6 +65,15 @@ scs2 <- scs %>%
                        "Denmark", "Estonia")) %>%
   view()
 
+scs3 <- scs %>%
+  filter(Entity %in% c("Austria", "Belgium", "Bulgaria",
+                       "Croatia", "Brazil", "China",
+                       "Russia", "Denmark", "Estonia")) %>%
+  group_by(Entity) %>%
+  summarise(media_renda = mean(renda),
+            media_por = mean(porcentagem)) %>%
+  view()
+
 
 # Gráficos ---------------------------------------------------------------------------------------------------------------------------------
 
@@ -106,3 +115,13 @@ ggplot(scs, aes(x = renda, y = porcentagem)) +
   labs(x = "Renda per capita ($)", 
        y = "Percentagem de lares com uma pessoa",
        color = "Países") 
+
+ggplot(scs3, aes(x = media_renda, y = media_por, col = Entity)) +
+  geom_point(size = 1) +
+  scale_x_continuous(labels = comma) +
+  geom_label(aes(label = Entity), size = 5) +
+  labs(x = "Renda per capita ($)", 
+       y = "Percentagem de lares com uma pessoa",
+       color = "Países") +
+  theme_minimal() +
+  theme(legend.position = "none")
