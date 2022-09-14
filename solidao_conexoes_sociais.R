@@ -24,8 +24,19 @@
 ### unipessoais: pessoas mais ricas tendem a viver sozinhas. O número de pessoas 
 ### que moram sozinhas tende a ser maior em países com maior renda per capita.
 
-### Estas correlações devem-se em parte ao facto de que as pessoas que podem 
+### Estas correlações devem-se em parte ao fato de que as pessoas que podem 
 ### dar-se a esse luxo, optam frequentemente por viver sozinhas. 
+
+# Carregar pacotes -------------------------------------------------------------------------------------------------------------------------
+
+library(tidyverse)
+library(cols4all)
+
+# Carregar dados ---------------------------------------------------------------------------------------------------------------------------
+
+scs <- read.csv("one-person-households-vs-gdp-per-capita.csv")
+view(scs)
+names(scs)
 
 
 
